@@ -1,8 +1,14 @@
 import {Component, Input, Output, EventEmitter} from '@angular/core';
 import {Item} from '../common/models/item.model';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms'
 
 @Component({
   selector: 'item-detail',
+  styles: [`input.name.ng-untouched, input.description.ng-untouched{ 
+              border: none; 
+              border-bottom: 1px solid rgba(0, 0, 0, .12);
+             }`
+  ],
   template: `
   <div class="fem-card mdl-card mdl-shadow--2dp">
     <div class="mdl-card__title">
@@ -16,7 +22,7 @@ import {Item} from '../common/models/item.model';
             <input [(ngModel)]="selectedItem.name"
               name="name"
               placeholder="Enter a name"
-              class="mdl-textfield__input" type="text" 
+              class="mdl-textfield__input form-control name" type="text" 
               required minlength="4"
               #name="ngModel" >
           </div>
@@ -35,7 +41,7 @@ import {Item} from '../common/models/item.model';
             <input [(ngModel)]="selectedItem.description"
               name="description"
               placeholder="Enter a description"
-              class="mdl-textfield__input" type="text" required>
+              class="mdl-textfield__input description" type="text" required>
           </div>
       </form>
     </div>
